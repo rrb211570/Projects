@@ -1,0 +1,11 @@
+The UCSC Game Design Department was considering a new software to use in an undergraduate class.
+The software I was currently using in the class was GameMaker, which involved coding in GML (OO-language).
+
+Since the dept. wanted to make the class more accessible for those w/o much coding experience,
+they wanted to explore Construct 2, a simpler script-based app.
+
+My job was to convert my game in GameMaker, to Construct 2, recording the whole process, with
+some tutorial details of basic features (to give an idea of usage complexity),
+to see if the development process was shorter and simpler with the new software.
+
+The UCSC Game Design Department ended up switching software to Construct 2.
