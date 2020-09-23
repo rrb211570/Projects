@@ -1,4 +1,4 @@
-Perl-based Test Harness (Currently only supports Integer @param stress test)
+# Perl-based Test Harness (Currently only supports Integer @param stress test)
 
 Command: Harness.pl [input file] [output file]
 
