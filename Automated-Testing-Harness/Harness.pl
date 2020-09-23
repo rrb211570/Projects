@@ -2,6 +2,7 @@
 use warnings;
 use strict;
 
+# Helpers
 sub parse {
    my ($in) = @_;
    open(my $infile, $in) or die "Could not open file: '$in'";
@@ -66,6 +67,7 @@ sub makeTest {
    close($outfile) or die "Could not close";
 }
 
+# Script Start
 our $in;
 our $out;
 if($#ARGV + 1 != 2) {
