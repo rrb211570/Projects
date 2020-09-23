@@ -1,0 +1,57 @@
+<style media="screen">
+html{font-family: 'Fira Sans', sans-serif;}
+.bold{font-weight:bold;}
+.italic{font-style: italic;}
+.oblique{font-style: oblique;}
+
+h2 {font-size: 2rem;} /* multiplier coefficient: 1.6 */
+h3 {font-size: 1.17rem;}
+p  {font-size: 1.2rem;}
+label {font-size: 1.2rem;}
+
+body {background-image: url(bg3.jpg); background-size: 100% auto; color: rgba(0,0,0,0.87); font-family: 'Fira Sans', Arial; margin: 0; padding: 0;}
+
+/* nav bar */
+header {background: rgba(20, 30, 40, 0.82); border-top-style: solid; border-top-width: 2vh; border-top-color: rgba(20, 30, 40, 0.82)}
+.nav_flex {max-width: 100vw; display: flex; justify-content: space-evenly; font-size: 2.5vh; font-color: white; text-decoration: none;
+}
+a.buffer{width: 40vw;}
+a.jump{padding: 1vw; transition: background-color .3s, color .3s; transition-timing-function: ease-out; color: white;}
+a:visited {color: blue;}
+a.jump:visited {color: white;}
+a.jump:hover {background-color: white; color: black;}
+
+main {background-color: #ECEFF1; padding: 4%; margin-right: 10%;  margin-left: 10%;}
+.welc {text-align: center; margin-bottom: 2em;}
+.ucsc {width: 100%;}
+
+/* About me */
+#abt {display: flex; justify-content: center; padding-top: 3em;}
+.prof_pic {width: 60%; height: auto; border-radius: 50%; border-width: .5em; border-style: solid; border-color: rgb(55,55,55);}
+
+/* Projects */
+#proj {display: flex; flex-direction: column; margin-top: 2em;}
+#proj_links {background: url(button2.jpg); background-size: cover; display: flex;}
+.prj_text {width: 75%;}
+.prj_descript {margin: 1em;}
+.proj_select {display: flex; flex-direction: column; justify-content: space-evenly; margin: 1em;}
+
+/* Design */
+#phil {margin-top: 2em;}
+
+/* Interests */
+#interests {margin-top: 2em;}
+
+/* Contact me */
+#contact {margin-top: 2em;text-align: center;}
+.link {height: 5em; width: auto; border-style: solid; border-width: .1em; border-color: black;}
+/* Footer */
+
+/* media queries */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px){
+        a.nomobile {
+            display: none;
+        }
+        main{margin: 0;}
+}
+</style>

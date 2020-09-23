@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Welcome to Firebase Hosting</title>
+
+   <!-- update the version number as needed -->
+   <script defer src="/__/firebase/7.12.0/firebase-app.js"></script>
+   <!-- include only the Firebase features as you need -->
+   <script defer src="/__/firebase/7.12.0/firebase-auth.js"></script>
+   <script defer src="/__/firebase/7.12.0/firebase-database.js"></script>
+   <script defer src="/__/firebase/7.12.0/firebase-messaging.js"></script>
+   <script defer src="/__/firebase/7.12.0/firebase-storage.js"></script>
+   <!-- initialize the SDK after all desired features are loaded -->
+   <script defer src="/__/firebase/init.js"></script>
+
+   <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+</head>
+
+<body>
+   <header>
+      <div class="nav_flex">
+         <a class="buffer"></a>
+         <a class="jump nomobile" href="#abt">About Me </a>
+         <a class="jump nomobile" href="#proj">Projects</a>
+         <a class="jump nomobile" href="#phil">Philosophies </a>
+         <a class="jump nomobile" href="#interests">Interests</a>
+         <a class="jump nomobile" href="#contact">Contact Me</a>
+      </div>
+      <h1></h1>
+   </header>
+   <main>
+      <h2 class="welc">Welcome to my Portfolio!</h2>
+      <img class="ucsc" src="UCSC_Bridge.jpg" alt="UCSC Campus">
+      <div id="abt">
+         <div class="profile">
+            <img class="prof_pic" src="Profile2.jpg" alt="profile picture"><br>
+         </div>
+         <div class="abt_descript">
+            <h2>About Me</h2>
+            <p class="abt_content">My name is Rakesh, and I am an aspiring software developer studying Computer Science at UCSC. I'm currently working on projects to learn about tools, technologies, and processes, but my goal is to become a full stack or systems developer. I think it would be cool to one day be a decision-maker or an architect regarding product lifecycles.</p>
+         </div>
+      </div>
+      <div id="proj">
+         <h2>Projects</h2>
+         <div id="proj_links">
+            <div class="prj_text">
+               <div id="proj1">
+                  <h3 style="text-align: center;">Automated Testing Harness</h3>
+                  <div class="prj_descript">
+                     <p>As I was practicing DS&A problems from CTCI, I realized I was spending more time on testing my solutions, than writing them. I decided to automate this process to save time on future problems, and gain a useful industry practice.
+                     </p><br>
+                     <p>Right now, the harness supports a stress test on int parameter functions, to check for runtime errors.
+                     </p><br>
+                     <p>It takes in the input java file and an output file name, parses the input file for int parameter functions, and creates an output .java file that stress tests each function that contains solely integer parameters.
+                     </p><br>
+                     <p>For the next feature, I am working on getting the harness to handle IO mapping.
+                     </p><br>
+                     <p style="text-align: center;">(Java, Perl, Linux) Code: <a href="https://github.com/rrb211570/Projects" target="_blank">Github</a></p>
+                  </div>
+
+               </div>
+               <div id="proj2">
+                  <h3 style="text-align: center;">Nutrition Basket Calculator</h3>
+                  <div class="prj_descript">
+                     <p>Since I'm a cooking nut, so I like to cook a lot, but I don't know how healthy my diet is. I wanted to measure how healthy I'm eating, so I decided to make an app to do just that.
+                     </p><br>
+                     <p class="bold">My nutrition basket app takes in groceries input for a 5-10 day period, and calculates my average daily nutritional intake.
+                     </p><br>
+                     <p>Data is scraped in real-time from Wikipedia's nutritional profile for each ingredient, and multiplied by the amount of the ingredient in the basket.
+                     </p><br>
+                     <p>Contains an additional "view" to see what percent of USDA guidelines, we are meeting for each macro and micro nutrient.
+                     </p><br>
+                     <p>(Java, Node.js, PostgreSQL) Code: <a href="https://github.com/rrb211570/Projects" target="_blank">Github</a></p>
+                  </div>
+               </div>
+               <div id="proj3">
+                  <h3 style="text-align: center;">Delivery Path Visualizer</h3>
+                  <div class="prj_descript">
+                     <p>I wanted to practice implementing a graphing algorithm, since we never got to do that in our DS&A classes. I chose Djikstra, and thought of real-life use cases for the minimum path algorithm.
+                     </p><br>
+                     <p>It seemed natural to me, since I order grocery deliveries, that I can apply Djikstra to find the optimum path to go from the store to a single location. Furthermore, in a higher-level algorithm, I can estimate an optimal solution to traverse through several waypoint destinations in between.</p><br>
+                     <p>Visualized UI through OpenGL library.</p><br>
+
+                     <p>(C++, Perl, OpenGL) Code: <a href="https://github.com/rrb211570/Projects" target="_blank">Github</a>
+                     </p>
+                  </div>
+               </div>
+               <div id="proj4">
+                  <h3 style="text-align: center;">Huffman Encoding</h3>
+                  <div class="prj_descript">
+                     <p>I recently implemented huffman encoding in SmallTalk, for a comparative programming class I took. I wanted to see if I could implement this concept in a more popular language, and to stretch the bounds of how compression can work.
+                     </p><br>
+                     <p>I created a script to apply huffman compression/decompression, working differently based on different input options.
+                     </p><br>
+                     <p>Options: -w : Alphabetize by high-frequency sequences of characters (words),
+                     </p>
+                     <p>-c : by characters,
+                     </p>
+                     <p>-r [start] [end] : Compress/decompress within an internal range of the text file.
+                     </p><br>
+                     <p>(C, Perl) Code: <a href="https://github.com/rrb211570/Projects" target="_blank">Github</a></p>
+                  </div>
+               </div>
+            </div>
+            <div class="proj_select">
+               <button onclick="myFunction();myFunction1()">Automated Testing</button>
+
+               <button onclick="myFunction();myFunction2()">Nutrition Basket (pending)</button>
+
+               <button onclick="myFunction();myFunction3()">Delivery Path (pending)</button>
+
+               <button onclick="myFunction();myFunction4()">Huffman Encoding (in progress)</button>
+            </div>
+         </div>
+      </div>
+      <div id="phil">
+         <h2>Development Philosophies</h2>
+         <p class="bold">Safety First: </p>
+         <p>Protected code can offer stability and options for large software apps, preventing a single bug from crashing the whole program. As a best practice, I try-catch all my code in main, and often include additional try-catch's in lower levels, for error-logging, and to skip buggy test cases.</p><br>
+         <p class="bold">Diagrams and Pseudocode: </p>
+         <p>I am not very good at seeing big picture sometimes, or in translating novel behaviors and specs into code. So I've become comfortable going through iterations of drawing diagrams and writing pseudocode. This was a process I did often when I had to simulate the RISC-V ISA in C, going through quite a bit of paper.</p><br>
+         <p class="bold">Trust but Verify: </p>
+         <p>Testing saves lives. I test all my code that involves data processing, or some kind of I/O mapping.</p><br>
+         <p class="bold">Design-Plan-Allocate, Execute: </p>
+         <p>This is my framework for solving a problem. Is it easy enough for me to execute right away? Otherwise, I need to bust out paper and think. Is it complex enough to require a plan for multiple coding sessions? Can I set firm expectations for deadlines, or do I need to allocate buffer time or rolling deadlines to deal with unforeseen variables?</p>
+      </div>
+      <div id="interests">
+         <h2>Interests/Hobbies</h2>
+         <p class="bold">Learning new technologies/frameworks: </p>
+         <p>This summer (2020), I've learned HTML/CSS and a bit of JavaScript. I've coded a lot in Java and C, so I'm currently brushing up on Perl and C++, along with the OpenGL library, to diversify my programming capabilities.</p><br>
+         <p class="bold">Cooking and Baking</p>
+         <p>As a philosophy, when I make stuff, I try to make it from scratch as much as possible. Not only is it more educational, but the product often turns out better. Here's an over-detailed recipe I made for <a href="https://drive.google.com/file/d/1lRppEkRoefw5COOD2_Y6VB9YHDdaxuZm/view?usp=sharing" target="_blank">hot cocoa</a>.</p>
+      </div>
+      <div id="contact">
+         <h2>Contact Me: </h2>
+         <div class="links">
+         <a href="https://www.linkedin.com/in/rakesh-bandi-34415519a/" target="_blank"><img class="link" src="linkedin.png" alt="Linked-in link"></a>
+         <a href="https://github.com/rrb211570" target="_blank"><img class="link" src="github_img.png" alt="Github link"></a>
+      </div>
+      </div>
+   </main>
+
+   <footer>
+      <p>&copy; Rakesh Bandi 2020</p>
+      <p>Powered by Firebase</p>
+   </footer>
+
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+         let app = firebase.app();
+         let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+         document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+         console.error(e);
+         document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+   });
+   </script>
+   <script src="index.js"></script>
+</body>
+</html>
