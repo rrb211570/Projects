@@ -8,7 +8,7 @@ class Test{
       return 0;
    }
    String vodafone(int b){return "hello";}
-   int jkl(int b, intt c){
+   int jkl(int b, int[] c){
 	   return 0;
    }
 }

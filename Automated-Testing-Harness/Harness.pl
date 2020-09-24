@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 # Helpers
-sub parse {
+sub stressParse {
    my ($in) = @_;
    open(my $infile, $in) or die "Could not open file: '$in'";
    my @in_name = split(/.java$/, $in); # class name
@@ -37,7 +37,7 @@ sub parse {
    return \@functionList;
 }
 
-sub makeTest {
+sub makeStress {
    my ($functionList, $write_name) = @_;
    foreach(@$functionList) {
       my @arr = @$_;
@@ -70,20 +70,50 @@ sub makeTest {
 # Script Start
 our $in;
 our $out;
-if($#ARGV + 1 != 2) {
-   die "Err: Correct form: Harness.pl [input file] [output file name]";
+our $map;
+my $commandType = -1;
+
+# Decide what test to run
+if($#ARGV + 1 == 2) {
+   $commandType = 0; # Stress Test
 }
+if($#ARGV + 1 == 3) {
+   $commandType = 1; # IO Mapping Test
+}
+if($commandType == -1) {
+   die "\nErr: Correct form:\n\nInt Stress Test: Harness.pl [input file] [output file name]\nIO Mapping Test: Harness.pl [input file] [output file name] [mapping file]\n\nFlags: '-v' : verbose\n";
+}
+
 $in = shift(@ARGV);
 $out = shift(@ARGV);
 
+# validate correct input formats, valid Java input file
 if($in !~ m{.java$}) {
    die "Input: '$in' must be a .java file";
+}
+my $ret = system("javac $in");
+if($ret != 0) {
+   die "javac failed on input: $in\n";
 }
 if($out !~ m{.java$}) {
    die "Output: '$out' must end with '.java'";
 }
-print "Input File: $in\nOutput File Name: $out\n\n";
+print "\n Input File: $in\nOutput File: $out\n";
+if($commandType == 1) {
+   $map = shift(@ARGV);
+   if($map !~ m{.txt$}) {
+      die "\nInput: '$map' must be a .txt file\n";
+   }
+   print " IO Mapping: $map\n";
+}
+print "\n";
 
-my $functionList = parse($in);
-makeTest($functionList, $out);
+# process
+if($commandType == 0){
+   my $functionList = stressParse($in);
+   makeStress($functionList, $out);
+}
+if($commandType == 1){
+   print "mapping\n";
+}
 print "\nComplete\n";
