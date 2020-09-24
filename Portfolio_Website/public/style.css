@@ -3,6 +3,7 @@ html{font-family: 'Fira Sans', sans-serif;}
 .bold{font-weight:bold;}
 .italic{font-style: italic;}
 .oblique{font-style: oblique;}
+.center{text-align: center;}
 
 h2 {font-size: 2rem;} /* multiplier coefficient: 1.6 */
 h3 {font-size: 1.17rem;}
@@ -41,9 +42,11 @@ main {background-color: #ECEFF1; padding: 4%; margin-right: 10%;  margin-left: 1
 
 /* Interests */
 #interests {margin-top: 2em;}
-
+.food {display: flex; justify-content: space-around;}
+.foodpic{width: 80%; height: auto; margin: auto;}
+.foodpic2{width: 50%; height: auto; margin: auto;}
 /* Contact me */
-#contact {margin-top: 2em;text-align: center;}
+#contact {margin-top: 2em; text-align: center;}
 .link {height: 5em; width: auto; border-style: solid; border-width: .1em; border-color: black;}
 /* Footer */
 
