@@ -55,5 +55,7 @@ main {background-color: #ECEFF1; padding: 4%; margin-right: 10%;  margin-left: 1
             display: none;
         }
         main{margin: 0;}
+        #proj_links {flex-direction: column-reverse;}
+        .prj_text {width: 100%;}
 }
 </style>
