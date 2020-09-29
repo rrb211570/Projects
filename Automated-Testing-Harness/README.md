@@ -16,14 +16,14 @@ Purpose: discovers run-time errors;
 
 Command: Perl Harness.pl [input file] [output file] [mapping file]
 
-mapping file looks like:
------------------------------
-function //function name
-(0, 1, 33, 5) //in
-12 //out
-(1, 44, 55, 6) //in
-5 //out
----------------------------
+mapping file looks like:  
+-----------------------------  
+function //function name  
+(0, 1, 33, 5) //in  
+12 //out  
+(1, 44, 55, 6) //in  
+5 //out  
+---------------------------  
 
 (output file).java : Programmatically created file that creates a HashMap containing
                      the input-output mapping in (mapping file).txt, and runs a for-loop
