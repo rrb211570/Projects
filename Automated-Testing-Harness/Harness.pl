@@ -44,7 +44,6 @@ sub parseMap {
    # parse
    my @mapFunctionList;
    my $state = 0;
-   my @line;
    my $head;
    my @in;
    my $out;
@@ -58,7 +57,9 @@ sub parseMap {
             die "Invalid format in mapping file:\n\n$_\n\n";
          }
       } elsif($state == 1) {
-         if(/^\s*\( \s*( (\S+\s*\,\s*)* (\s*\S+) )\s* \)\s*$/x) {
+         if(/^s*;\s*/) {
+            $state = 0;
+         } elsif(/^\s*\( \s*( (\S+\s*\,\s*)* (\s*\S+) )\s* \)\s*$/x) {
             my $input_line = $1;
             # split up into array;
             if($input_line =~ /^.*\,.*$/){
@@ -69,25 +70,22 @@ sub parseMap {
             }
             $state = 2;
          } else {
-            die "Invalid format in mapping file:\n\n$_\n\n";
+            die "Invalid format in mapping file1:\n\n$_\n\n";
          }
       } elsif($state == 2) {
          if(/^\s*(\S+)\s*$/) {
+            my @line;
             $out = $1;
             push(@line,$head);
             foreach(@in) {
                push(@line, $_);
             }
             push(@line, $out);
-            foreach(@line){
-               print "'$_' ";
-            }
-            print "\n";
-            $state = 0;
+            push(@mapFunctionList,\@line);
+            $state = 1;
             @in = ();
-            @line = ();
          } else {
-            die "Invalid format in mapping file:\n\n$_\n\n";
+            die "Invalid format in mapping file2:\n\n$_\n\n";
          }
       }
    }
@@ -178,6 +176,7 @@ if($commandType == 0){
 if($commandType == 1){
    # ------ make sure IO mapping corresponds with function IO
    my $mapFunctionList = parseMap($map);
+   printFunction($mapFunctionList);
    # trimList($functionList, $mapFunctionList);
 
    # ------ construct Hashmap in 'out.java', and test mapping data
