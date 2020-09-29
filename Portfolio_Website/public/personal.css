@@ -1,3 +1,9 @@
 body {
 text-align: center;
 }
+
+h1 {font-size: 3em;}
+h2 {font-size: 1.5em;}
+.dates {
+   padding: 0% 0% 0% 38%; display: flex; flex-direction: column; text-align: left;
+}
