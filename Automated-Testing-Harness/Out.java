@@ -17,6 +17,6 @@ class Out {
          if(testFile.double_val(in_case[0], in_case[1], in_case[2], in_case[3]) == mp.get(in_case) ) passed++;
       }
 
-      System.out.println("Out: "+passed+"/"+tests+" passed.");
+      System.out.println("Out: "+passed+"/"+tests+" tests passed.");
    }
 }

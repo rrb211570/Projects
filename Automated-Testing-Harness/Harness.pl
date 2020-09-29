@@ -199,7 +199,7 @@ sub makeMap {
    my $outputArg = $argLength+1;
    print $outfile "in_case[$argLength]) == mp.get(in_case) ) passed++;\n";
    print $outfile "      }\n";
-   print $outfile "\n      System.out.println(\"$write_class[0]: \"+passed+\"/\"+tests+\" passed\.\");\n";
+   print $outfile "\n      System.out.println(\"$write_class[0]: \"+passed+\"/\"+tests+\" tests passed\.\");\n";
    print $outfile "   }\n}";
    close($outfile) or die "Could not close";
 }
