@@ -4,10 +4,10 @@
 # Int-param stress test
 Command: Perl Harness.pl [input file] [output file]
 
-Parses (input file).java for any int-param functions, and creates/replaces a file named by (output file).java.
+Parses (input file).java for any int-param functions, and creates/replaces a file named by (output file).java.  
 Ex. int-param function: "type function(int, int, int, int){ //code }
 
-(output file).java : Programmatically created file that calls the int-param functions, 
+(output file).java : Programmatically created file that calls the int-param functions,
                      in a for-loop, w/ Integer.MIN_VALUE to Integer.MAX_VALUE being given to each parameter.
                      
 Purpose: discovers run-time errors;
