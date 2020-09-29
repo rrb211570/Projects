@@ -37,6 +37,57 @@ sub parse {
    return \@functionList;
 }
 
+sub validateMap {
+   my ($map) = @_;
+   open(my $infile, $map) or die "Could not open file: '$map'";
+
+   # parse
+   my $state = 0;
+   my $head;
+   my @in;
+   my $args = 0;
+   my $tmpArgs;
+   while(<$infile>) {
+      if($state == 0) {
+         if(/^\s*(\S+)\s*$/) {
+            $head = $1;
+            $state = 1;
+         } else {
+            die "Invalid format in mapping file:\n\n$_\n\n";
+         }
+      } elsif($state == 1) {
+         if(/^\s*\( \s*( (\S+\s*\,\s*)* (\s*\S+) )\s* \)\s*$/x) {
+            my $input_line = $1;
+            # split up into array;
+            if($input_line =~ /^.*\,.*$/){
+               @in = split(/\s*\,\s*/,$input_line);
+               $tmpArgs = @in;
+            } else {
+               $tmpArgs = 1;
+            }
+            if($args==0) {
+               $args = $tmpArgs;
+            } else {
+               if($args != $tmpArgs) {
+                  die "Inconsistent #input_args in mapping file:\n\n$_\n\n";
+               }
+            }
+         } else {
+            die "Invalid format in mapping file:\n\n$_\n\n";
+         }
+         @in = ();
+         $state = 2;
+      } elsif($state == 2) {
+         if(/^\s*(\S+)\s*$/) {
+            $state = 1;
+         } else {
+            die "Invalid output in mapping file:\n\n$_\n\n";
+         }
+      }
+   }
+   return $head;
+}
+
 sub parseMap {
    my ($map) = @_;
    open(my $infile, $map) or die "Could not open file: '$map'";
@@ -47,7 +98,6 @@ sub parseMap {
    my $head;
    my @in;
    my $out;
-   print "\nMapping data:\n\n";
    while(<$infile>) {
       if($state == 0) {
          if(/^\s*(\S+)\s*$/) {
@@ -114,6 +164,46 @@ sub makeStress {
    close($outfile) or die "Could not close";
 }
 
+sub makeMap {
+   my ($function, $mapCases, $write_name) = @_;
+   open(my $outfile, ">$write_name") or die "Could not open file";
+   my @write_class = split(/.java/,$write_name);
+
+   # populate .java stress test
+   print $outfile "//IO Mapping\n";
+   print $outfile "import java.util.*;\n\n";
+   print $outfile "class $write_class[0] {\n";
+   print $outfile "   public static void main(String[] args){\n";
+   print $outfile "      Test testFile = new Test();";
+   print $outfile "      int passed = 0;\n";
+   my $tests = @$mapCases;
+   print $outfile "      int tests = $tests;\n";
+   print $outfile "      HashMap<int[], Integer> mp = new HashMap<int[], Integer>();\n";
+   my $argLength;
+   foreach(@$mapCases) {
+      my @arr = @$_;
+      print $outfile "      mp.put(new int[]{";
+      $argLength = ($#arr)-2;
+      foreach my $i(1..(($#arr)-2)) {
+         print $outfile "$arr[$i], ";
+      }
+      my $tmp = $#arr - 1;
+      my $tmpLast = $tmp + 1;
+      print $outfile "$arr[$tmp]},  $arr[$tmpLast]);\n";
+   }
+   print $outfile "\n      for(int[] in_case : mp.keySet()){\n";
+   print $outfile "         if(testFile.$function(";
+   foreach my $i(0 .. ($argLength-1)) {
+      print $outfile "in_case[$i], ";
+   }
+   my $outputArg = $argLength+1;
+   print $outfile "in_case[$argLength]) == mp.get(in_case) ) passed++;\n";
+   print $outfile "      }\n";
+   print $outfile "\n      System.out.println(\"$write_class[0]: \"+passed+\"/\"+tests+\" passed\.\");\n";
+   print $outfile "   }\n}";
+   close($outfile) or die "Could not close";
+}
+
 sub printFunction {
    my ($functionList) = @_;
    foreach(@$functionList) {
@@ -124,6 +214,26 @@ sub printFunction {
       }
       print "\n";
    }
+}
+
+sub getHeaders {
+   my ($functionList) = @_;
+   my @heads;
+   foreach(@$functionList) {
+      my @arr = @$_;
+      push(@heads, $arr[1]);
+   }
+   return \@heads;
+}
+
+sub getTestHeaders {
+   my ($functionList) = @_;
+   my @heads;
+   foreach(@$functionList) {
+      my @arr = @$_;
+      push(@heads, $arr[0]);
+   }
+   return \@heads;
 }
 
 # Script Start
@@ -168,18 +278,22 @@ print "\n";
 
 # process
 my $functionList = parse($in, $commandType);
-printFunction($functionList);
+# printFunction($functionList);
 
 if($commandType == 0){
    makeStress($functionList, $out);
 }
 if($commandType == 1){
    # ------ make sure IO mapping corresponds with function IO
-   my $mapFunctionList = parseMap($map);
-   printFunction($mapFunctionList);
-   # trimList($functionList, $mapFunctionList);
+   my $function = validateMap($map);
+   my $mapCases = parseMap($map);
+   # printFunction($mapCases);
+   my $headers = getHeaders($functionList);
+   my %hash = @$headers;
+   if(!exists($hash{$function})) {
+      die "Error: function '$_' does not exist in $in\n";
+   }
 
-   # ------ construct Hashmap in 'out.java', and test mapping data
-   # makeMap($functionList, $map, $out);
+   makeMap($function, $mapCases, $out);
 }
-print "\nComplete\n";
+print "Complete\n";
