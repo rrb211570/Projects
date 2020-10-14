@@ -37,13 +37,20 @@ main {background-color: #ECEFF1; padding: 4%; margin-right: 10%;  margin-left: 1
 .prj_descript {margin: 1em;}
 .proj_select {display: flex; flex-direction: column; justify-content: space-evenly; margin: 1em;}
 
+/* Interests */
+#interests {margin-top: 2em;}
+.food_pics{background-color: black; padding: 1%;}
+.food {display: grid; grid-gap: 1%; grid-template-columns: auto auto auto; grid-template-rows: auto auto;}
+.foodpic1{width: 100%; height: auto; grid-column: 1 / 2; grid-row: 1 / 2; align-items: center;}
+.foodpic2{width: 100%; height: auto; grid-column: 2 / 3; grid-row: 1 / 2; align-items: end;}
+.foodpic3{width: 100%; height: auto; grid-column: 3 / 4; grid-row: 1 / 2; align-items: end;}
+.foodpic4{width: 100%; height: auto; grid-column: 1 / 2; grid-row: 2 / 3; align-items: center;}
+.foodpic5{width: 100%; height: auto; grid-column: 2 / 3; grid-row: 2 / 3; align-items: start;}
+.foodpic6{width: 100%; height: auto; grid-column: 3 / 4; grid-row: 2 / 3; align-items: start;}
+
 /* Design */
 #phil {margin-top: 2em;}
 
-/* Interests */
-#interests {margin-top: 2em;}
-.food {display: flex; justify-content: space-around;}
-.foodpic{width: 80%; height: auto; margin: auto;}
 /* Contact me */
 #contact {margin-top: 2em; text-align: center;}
 .link {height: 5em; width: auto; border-style: solid; border-width: .1em; border-color: black;}
