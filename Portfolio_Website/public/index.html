@@ -20,32 +20,42 @@
 </head>
 
 <body>
-   <header>
-      <div class="nav_flex">
-         <a class="buffer"></a>
-         <a class="jump nomobile navlink" href="#abt">About Me </a>
-         <a class="jump nomobile navlink" href="#proj">Projects</a>
-         <a class="jump nomobile navlink" href="#contact">Contact Me</a>
-         <!--<a class="jump nomobile navlink" href="#blog">Blog</a>-->
-      </div>
-      <h1></h1>
-   </header>
    <main>
-      <div id="abt">
-         <div class="profile">
+      <div class="abt">
+         <div>
             <img class="prof_pic" src="Profile2.jpg" alt="profile picture"><br>
          </div>
-         <div class="abt_descript">
+         <div>
             <h2>Welcome to my Portfolio!</h2>
-            <p class="abt_content">My name is Rakesh, and I am an aspiring software developer with a B.S. in Computer Science from UCSC. I'm currently working on projects to learn about tools, technologies, and processes, but my goal is to become a full stack or cloud developer. I think it would be cool to one day be an architect of my own product lifecycle.</p>
+            <p>My name is Rakesh, and I am an aspiring full stack developer. I'm currently learning about technologies used in different parts of the stack.</p>
          </div>
+         <h2>Contact Me: </h2>
+         <div>
+            <a href="https://www.linkedin.com/in/rakesh-bandi-34415519a/" target="_blank"><img class="link" src="linkedin.png" alt="Linked-in link"></a>
+            <a href="https://github.com/rrb211570" target="_blank"><img class="link" src="github_img.png" alt="Github link"></a>
+         </div>
+         <p>&copy; Rakesh Bandi 2020</p>
       </div>
-      <div id="proj">
-         <h2 class="center">Projects</h2>
-         <div id="proj_links">
-            <div class="prj_text">
-               <div id="proj1">
-                  <h3 style="text-align: center;">Automated Testing Harness</h3>
+      <div class="proj">
+         <div class="proj_select">
+            <button class="jump nomobile" style="font-size: 1.2rem;" onclick="myFunction();myFunction1()">Nutrition Basket</button>
+            <button class="jump nomobile" style="font-size: 1.2rem;" onclick="myFunction();myFunction2()">Automated Testing</button>
+            <button class="jump nomobile" style="font-size: 1.2rem;" onclick="myFunction();myFunction3()">Delivery Path (pending)</button>
+            <button class="jump nomobile" style="font-size: 1.2rem;" onclick="myFunction();myFunction4()">Huffman Encoding (pending)</button>
+         </div>
+         <div class="proj_items">
+            <div id="proj1">
+               <div class="prj_descript">
+                  <p><b>My UWP app, written in C++/WinRT, calculates the average daily nutrition for a basket (list of ingredients). It is able to search for locally-stored ingredients as well as ingredients from USDA's databases, via the FoodData Central API.</b>
+                  </p>
+                  <div class="prj_video">
+                     <p>Demo</p>
+                     <iframe src="https://drive.google.com/file/d/1eKx-XBHwMgbxwWjeXsa8kAH7bbvipTyd/preview" width="960" height="540" allow="autoplay" allowfullscreen="allowfullscreen"></iframe>
+                  </div>
+                     <p style="text-align: center;">(Windows, C++/WinRT, WinUI) Code: Kept private since I am aiming for completion, commercially.</p>
+                  </div>
+               </div>
+               <div id="proj2">
                   <div class="prj_descript">
                      <p>As I was practicing DS&A problems from CTCI, I realized I was spending more time on testing my solutions, than writing them. I decided to automate this process to save time on future problems, and gain a useful industry practice.
                      </p>
@@ -56,23 +66,8 @@
                      </p><br>
                      <p style="text-align: center;">(Java, Perl, Linux) Code: <a href="https://github.com/rrb211570/Projects/tree/master/Automated-Testing-Harness" target="_blank">Github</a></p>
                   </div>
-
-               </div>
-               <div id="proj2">
-                  <h3 style="text-align: center;">Nutrition Basket Calculator</h3>
-                  <div class="prj_descript">
-                     <p>Since I'm a cooking nut, I like to cook a lot. But I don't know how healthy my diet is. I wanted to measure how healthy I'm eating, so I decided to make an app to do just that.
-                     </p>
-                     <p class="bold">My nutrition basket app takes in groceries input and the time interval to calculate average daily nutrition.
-                     </p>
-                     <p>-Nutrition data can be manual input or scraped from the USDA Database.<br>
-                        -Shows percentage of USDA health guidelines being met
-                     </p><br>
-                     <p style="text-align: center;">(Windows, C++/WinRT, WinUI) Code: <a href="https://github.com/rrb211570/NutritionBasket" target="_blank">Github</a></p>
-                  </div>
                </div>
                <div id="proj3">
-                  <h3 style="text-align: center;">Delivery Path Visualizer</h3>
                   <div class="prj_descript">
                      <p>I wanted to practice implementing a graphing algorithm, since we never got to do that in our DS&A classes. I chose Djikstra, and thought of real-life use cases for the minimum path algorithm.
                      </p>
@@ -84,7 +79,6 @@
                   </div>
                </div>
                <div id="proj4">
-                  <h3 style="text-align: center;">Huffman Encoding</h3>
                   <div class="prj_descript">
                      <p>I recently implemented huffman encoding in SmallTalk, for a comparative programming class I took. I wanted to see if I could implement this concept in a more popular language, and to stretch the bounds of how compression can work.
                      </p>
@@ -99,30 +93,9 @@
                   </div>
                </div>
             </div>
-            <div class="proj_select">
-               <button onclick="myFunction();myFunction1()">Automated Testing</button>
-
-               <button onclick="myFunction();myFunction2()">Nutrition Basket (in progress)</button>
-
-               <button onclick="myFunction();myFunction3()">Delivery Path (pending)</button>
-
-               <button onclick="myFunction();myFunction4()">Huffman Encoding (pending)</button>
-            </div>
-         </div>
-      </div>
-      <div id="contact">
-         <h2>Contact Me: </h2>
-         <div class="links">
-            <a href="https://www.linkedin.com/in/rakesh-bandi-34415519a/" target="_blank"><img class="link" src="linkedin.png" alt="Linked-in link"></a>
-            <a href="https://github.com/rrb211570" target="_blank"><img class="link" src="github_img.png" alt="Github link"></a>
          </div>
       </div>
    </main>
-
-   <footer>
-      <p>&copy; Rakesh Bandi 2020</p>
-      <p>Powered by Firebase</p>
-   </footer>
 
    <script>
    document.addEventListener('DOMContentLoaded', function() {
